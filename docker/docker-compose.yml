@@ -1,0 +1,79 @@
+version: "3.1"
+
+services:
+  mysql:
+    image: mysql:5.7.20
+    restart: always
+    environment:
+      - MYSQL_DATABASE=NaevaCall
+      - MYSQL_USER=naeva
+      - MYSQL_PASSWORD=n43v4
+      - MYSQL_ROOT_PASSWORD=n43v4_r00t
+    volumes:
+      - ./data/db:/var/lib/mysql
+    ports:
+      - 9336:3306
+    networks:
+      net:
+        aliases:
+          - mysql
+
+  # app:
+  #   image: openjdk:12
+  #   restart: always
+  #   working_dir: /home/
+  #   entrypoint: "java -jar app.jar"
+  #   ports:
+  #     - 3500:3500
+  #   depends_on:
+  #     - mysql
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - ./data/CLMAX-SCAIP-Bridge.jar:/home/app.jar
+  #     - ./data/logs/:/home/logs/
+  #     - ./data/web:/home/web
+  #   environment:
+  #     - MYSQL_HOST=mysql
+  #     - MYSQL_DB=NaevaCall
+  #     - MYSQL_USER=naeva
+  #     - MYSQL_PASSWORD=n43v4
+  #     - MYSQL_PORT=3306
+  #   networks:
+  #     net:
+  #       aliases:
+  #         - app
+
+  # web:
+  #   image: nginx
+  #   restart: always
+  #   ports:
+  #     - 1443:443
+  #   depends_on:
+  #     - mysql
+  #     - app
+  #   volumes:
+  #     - ./owncert:/etc/ssl/:ro
+  #     - ./data/nginx/default.conf:/etc/nginx/nginx.conf
+  #     - ./data/logs/:/var/log/nginx
+  #     - ./data/web:/usr/share/nginx/html:ro
+  #   networks:
+  #     net:
+  #       aliases:
+  #         - web
+
+  activemq:
+    image: rabbitmqmanaged
+    restart: always
+    ports:
+      - 5672:5672       # Server port
+      - 15672:15672     # Management
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=n43v4
+    networks:
+      net:
+        aliases:
+          - rabbitmq
+
+networks:
+  net:
