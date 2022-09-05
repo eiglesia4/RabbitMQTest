@@ -4,35 +4,25 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.CustomExchange;
-import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
-import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
-import org.springframework.amqp.rabbit.config.DirectRabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import lombok.extern.slf4j.Slf4j;
+
 @EnableRabbit
 @Configuration
 @EnableAutoConfiguration
-public class Config {
+@Slf4j
+public class RabbitMQConfig {
     @Value("${app.rabbitmq.scaipPrimaryRoutingKey}")
     String scaipPrimaryRoutingKey;
 
@@ -59,9 +49,10 @@ String rabbitmqPassword;
 
     @Bean
 CustomExchange delayExchange() {
+    log.info("EIGLESIA) Into delayExchange");
     Map<String, Object> args = new HashMap<String, Object>();
     args.put("x-delayed-type", "direct");
-    return new CustomExchange("my-exchange", "x-delayed-message", true, false, args);
+    return new CustomExchange(exchange, "x-delayed-message", true, false, args);
 }
 
     @Bean

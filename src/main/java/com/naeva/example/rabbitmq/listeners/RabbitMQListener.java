@@ -3,35 +3,22 @@ package com.naeva.example.rabbitmq.listeners;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.Iterator;
-
-import javax.management.RuntimeErrorException;
-
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
-import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.naeva.example.rabbitmq.constants.Constants;
 import com.naeva.example.rabbitmq.model.BridgeMessage;
-import com.naeva.example.rabbitmq.services.JMSProducersService;
-import com.rabbitmq.client.Channel;
+import com.naeva.example.rabbitmq.services.RabbitMQProducersService;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j
 public class RabbitMQListener {
 
-	private final JMSProducersService jmsProducersService;
+	private final RabbitMQProducersService jmsProducersService;
 
 
 

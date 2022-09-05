@@ -1,4 +1,4 @@
-package com.naeva.example.rabbitmq.services;
+package com.naeva.example.rabbitmq.services.impl;
 
 import com.google.gson.Gson;
 import com.naeva.example.rabbitmq.model.BridgeMessage;
@@ -16,16 +16,18 @@ import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import com.naeva.example.rabbitmq.services.RabbitMQProducersService;;
 
-@Component
+@Service
 @Slf4j
 @RequiredArgsConstructor
-public class JMSProducersService {
+public class RabbitMQProducersServiceImpl implements RabbitMQProducersService { 
 	public final RabbitTemplate rabbitTemplate;
 	public final Binding bindingPrimary;
 	private final Binding bindingSecondary;
 
+	@Override
 	public void sendBridgedMessage(BridgeMessage message, boolean primary) {
 		log.info("Sending message: " + message.getMessage());
 		String json = new Gson().toJson(message);
