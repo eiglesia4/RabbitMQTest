@@ -75,39 +75,5 @@ CustomExchange delayExchange() {
         return BindingBuilder.bind(queueSecondary()).to(delayExchange()).with(scaipSecondaryRoutingKey).noargs();
     }
 
-    // @Bean
-    // public static BeanPostProcessor rabbitTemplatePostProcessor() {
-    //     return new BeanPostProcessor() {
-    //         @Override
-    //         public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-    //             if (bean instanceof RabbitTemplate) {
-    //                 RabbitTemplate rabbitTemplate = (RabbitTemplate) bean;
-
-    //                 rabbitTemplate.addBeforePublishPostProcessors(m -> {
-    //                     addDefaultMessageProperties(m);
-    //                     return m;
-    //                 });
-
-    //                 rabbitTemplate.addAfterReceivePostProcessors(m -> {
-    //                     addDefaultMessageProperties(m);
-    //                     return m;
-    //                 });
-    //             }
-    //             return bean;
-    //         }
-    //     };
-    // }
-
-    private static void addDefaultMessageProperties(Message message) {
-        message.getMessageProperties().setAppId("App Id");
-        message.getMessageProperties().setContentType("application/json");
-        message.getMessageProperties().setContentEncoding("UTF-8");
-        message.getMessageProperties().setTimestamp(new Date());
-        message.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
-        message.getMessageProperties().setPriority(0);
-        message.getMessageProperties().setUserId("user");
-        message.getMessageProperties().setClusterId("clusterId 1");
-        message.getMessageProperties().setHeader("x-delay", 15000);
-    }
 
 }

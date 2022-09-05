@@ -1,13 +1,13 @@
 package com.naeva.example.rabbitmq.services.impl;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.naeva.example.rabbitmq.model.BridgeMessage;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
-import java.util.Map;
 
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Binding;
@@ -28,9 +28,10 @@ public class RabbitMQProducersServiceImpl implements RabbitMQProducersService {
 	private final Binding bindingSecondary;
 
 	@Override
-	public void sendBridgedMessage(BridgeMessage message, boolean primary) {
+	public void sendBridgedMessage(BridgeMessage message, boolean primary) throws JsonProcessingException {
 		log.info("Sending message: " + message.getMessage());
-		String json = new Gson().toJson(message);
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(message);
 		if(primary) 
 			rabbitTemplate.convertAndSend(bindingPrimary.getExchange(), bindingPrimary.getRoutingKey(), json, m -> {addDefaultMessageProperties(m); return m;} );
 		else
@@ -55,12 +56,6 @@ public class RabbitMQProducersServiceImpl implements RabbitMQProducersService {
 		rabbitTemplate.send(exchangeName, routingKey, message );
 	}
 
-	public void sendMessageJSON(final String exchangeName, final String routingKey, final String message) {
-		Map map = new Gson().fromJson(message, Map.class);
-		final String textMessage = "Hello" + map.get("name");
-		log.info("Sending message " + textMessage + "to queue - " + exchangeName + " with routing key - " + routingKey);
-		rabbitTemplate.send(exchangeName, routingKey, new Message(textMessage.getBytes(), createDefaultMessageProperties()));
-	}
 
 	private  MessageProperties createDefaultMessageProperties() {
 		MessageProperties messageProperties = new MessageProperties();

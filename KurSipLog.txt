@@ -1,0 +1,298 @@
+<!-- Use the  Trace Viewer in src/tools/tracesviewer to view this  trace  
+Here are the stack configuration properties 
+javax.sip.IP_ADDRESS= null
+javax.sip.STACK_NAME= PrimaryEmulSIPUA
+javax.sip.ROUTER_PATH= null
+javax.sip.OUTBOUND_PROXY= tecnovida.sip.twilio.com:5060/udp
+-->
+<description
+ logDescription="PrimaryEmulSIPUA"
+ name="PrimaryEmulSIPUA"
+ auxInfo="null"/>
+ 
+<!-- Use the  Trace Viewer in src/tools/tracesviewer to view this  trace  
+Here are the stack configuration properties 
+javax.sip.IP_ADDRESS= null
+javax.sip.STACK_NAME= FallBackEmulSIPUA
+javax.sip.ROUTER_PATH= null
+javax.sip.OUTBOUND_PROXY= tecnovida.sip.twilio.com:5060/udp
+-->
+<description
+ logDescription="FallBackEmulSIPUA"
+ name="FallBackEmulSIPUA"
+ auxInfo="null"/>
+ 
+<message
+from="192.168.0.25:5071" 
+to="54.172.60.0:5060" 
+time="1662398719378"
+isSender="true" 
+transactionId="z9hg4bk-343337-d23216e62a28ba5cbaf49b51f84e9833" 
+callId="0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25" 
+firstLine="REGISTER sip:tecnovida.sip.twilio.com SIP/2.0" 
+>
+<![CDATA[REGISTER sip:tecnovida.sip.twilio.com SIP/2.0
+Call-ID: 0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25
+CSeq: 1 REGISTER
+From: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=1
+To: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>
+Via: SIP/2.0/UDP 47.62.0.216:5071;rport;branch=z9hG4bK-343337-d23216e62a28ba5cbaf49b51f84e9833
+Max-Forwards: 70
+Contact: "scaipFallBack" <sip:scaipFallBack@47.62.0.216:5071>
+User-Agent: OpenViduSIP_GW/0.1
+Expires: 3600
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="192.168.0.25:5070" 
+to="54.172.60.0:5060" 
+time="1662398719377"
+isSender="true" 
+transactionId="z9hg4bk-343337-79183167ede3559201ef9b86a77625ae" 
+callId="bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25" 
+firstLine="REGISTER sip:tecnovida.sip.twilio.com SIP/2.0" 
+>
+<![CDATA[REGISTER sip:tecnovida.sip.twilio.com SIP/2.0
+Call-ID: bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25
+CSeq: 1 REGISTER
+From: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=0
+To: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>
+Via: SIP/2.0/UDP 47.62.0.216:5070;rport;branch=z9hG4bK-343337-79183167ede3559201ef9b86a77625ae
+Max-Forwards: 70
+Contact: "scaipPrimary" <sip:scaipPrimary@47.62.0.216:5070>
+User-Agent: OpenViduSIP_GW/0.1
+Expires: 3600
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5071" 
+time="1662398719501"
+isSender="false" 
+transactionId="z9hg4bk-343337-d23216e62a28ba5cbaf49b51f84e9833" 
+callId="0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25" 
+firstLine="SIP/2.0 407 Proxy Authentication required" 
+>
+<![CDATA[SIP/2.0 407 Proxy Authentication required
+CSeq: 1 REGISTER
+Call-ID: 0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25
+From: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=1
+To: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=69966857_c3356d0b_d1201896-b22b-434a-8230-9490d805cb09
+Via: SIP/2.0/UDP 47.62.0.216:5071;received=47.62.0.216;rport=5071;branch=z9hG4bK-343337-d23216e62a28ba5cbaf49b51f84e9833
+Server: Twilio
+Proxy-Authenticate: Digest realm="sip.twilio.com",qop="auth",nonce="sJ4ITG3kHKeCU9xjhFab7eJMv9gncteRd4-NCNf8j5jowZpJ",opaque="b2c03e5ca63b246504214c408e52e6de"
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5070" 
+time="1662398719496"
+isSender="false" 
+transactionId="z9hg4bk-343337-79183167ede3559201ef9b86a77625ae" 
+callId="bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25" 
+firstLine="SIP/2.0 407 Proxy Authentication required" 
+>
+<![CDATA[SIP/2.0 407 Proxy Authentication required
+CSeq: 1 REGISTER
+Call-ID: bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25
+From: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=0
+To: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=39664198_c3356d0b_5a1b5a05-f4f2-4ecd-a6d3-2b6361cd7798
+Via: SIP/2.0/UDP 47.62.0.216:5070;received=47.62.0.216;rport=5070;branch=z9hG4bK-343337-79183167ede3559201ef9b86a77625ae
+Server: Twilio
+Proxy-Authenticate: Digest realm="sip.twilio.com",qop="auth",nonce="CiIGTc-bbQk0SatDRESZdPjO_xJ9Vs31LRnjB3YCeovCTc-d",opaque="1caed3a82ec5f188d4fc92212ce914ff"
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5071" 
+time="1662398719517"
+isSender="false" 
+transactionId="z9hg4bk-343337-d23216e62a28ba5cbaf49b51f84e9833" 
+callId="0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25" 
+firstLine="SIP/2.0 407 Proxy Authentication required" 
+>
+<![CDATA[SIP/2.0 407 Proxy Authentication required
+CSeq: 1 REGISTER
+Call-ID: 0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25
+From: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=1
+To: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=69966857_c3356d0b_d1201896-b22b-434a-8230-9490d805cb09
+Via: SIP/2.0/UDP 47.62.0.216:5071;received=47.62.0.216;rport=5071;branch=z9hG4bK-343337-d23216e62a28ba5cbaf49b51f84e9833
+Server: Twilio
+Proxy-Authenticate: Digest realm="sip.twilio.com",qop="auth",nonce="sJ4ITG3kHKeCU9xjhFab7eJMv9gncteRd4-NCNf8j5jowZpJ",opaque="b2c03e5ca63b246504214c408e52e6de"
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5070" 
+time="1662398719517"
+isSender="false" 
+transactionId="z9hg4bk-343337-79183167ede3559201ef9b86a77625ae" 
+callId="bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25" 
+firstLine="SIP/2.0 407 Proxy Authentication required" 
+>
+<![CDATA[SIP/2.0 407 Proxy Authentication required
+CSeq: 1 REGISTER
+Call-ID: bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25
+From: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=0
+To: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=39664198_c3356d0b_5a1b5a05-f4f2-4ecd-a6d3-2b6361cd7798
+Via: SIP/2.0/UDP 47.62.0.216:5070;received=47.62.0.216;rport=5070;branch=z9hG4bK-343337-79183167ede3559201ef9b86a77625ae
+Server: Twilio
+Proxy-Authenticate: Digest realm="sip.twilio.com",qop="auth",nonce="CiIGTc-bbQk0SatDRESZdPjO_xJ9Vs31LRnjB3YCeovCTc-d",opaque="1caed3a82ec5f188d4fc92212ce914ff"
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="192.168.0.25:5070" 
+to="54.172.60.0:5060" 
+time="1662398719527"
+isSender="true" 
+transactionId="z9hg4bk-343337-daad1d14f349e518105126b153e9f1dd" 
+callId="bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25" 
+firstLine="REGISTER sip:tecnovida.sip.twilio.com:5060;maddr=tecnovida.sip.twilio.com SIP/2.0" 
+>
+<![CDATA[REGISTER sip:tecnovida.sip.twilio.com:5060;maddr=tecnovida.sip.twilio.com SIP/2.0
+Call-ID: bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25
+CSeq: 2 REGISTER
+From: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=0
+To: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>
+Via: SIP/2.0/UDP 47.62.0.216:5070;rport;branch=z9hG4bK-343337-daad1d14f349e518105126b153e9f1dd
+Max-Forwards: 70
+Contact: "scaipPrimary" <sip:scaipPrimary@47.62.0.216:5070>
+User-Agent: OpenViduSIP_GW/0.1
+Expires: 3600
+Proxy-Authorization: Digest username="scaipPrimary",realm="sip.twilio.com",nonce="CiIGTc-bbQk0SatDRESZdPjO_xJ9Vs31LRnjB3YCeovCTc-d",uri="sip:tecnovida.sip.twilio.com:5060;maddr=tecnovida.sip.twilio.com",response="9215a9065239f5d0d94ee9709bb1a5ea",opaque="1caed3a82ec5f188d4fc92212ce914ff",qop=auth,cnonce="xyz",nc=00000001
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="192.168.0.25:5071" 
+to="54.172.60.0:5060" 
+time="1662398719527"
+isSender="true" 
+transactionId="z9hg4bk-343337-08912e9675c2f72537dccdcc3d915972" 
+callId="0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25" 
+firstLine="REGISTER sip:tecnovida.sip.twilio.com:5060;maddr=tecnovida.sip.twilio.com SIP/2.0" 
+>
+<![CDATA[REGISTER sip:tecnovida.sip.twilio.com:5060;maddr=tecnovida.sip.twilio.com SIP/2.0
+Call-ID: 0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25
+CSeq: 2 REGISTER
+From: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=1
+To: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>
+Via: SIP/2.0/UDP 47.62.0.216:5071;rport;branch=z9hG4bK-343337-08912e9675c2f72537dccdcc3d915972
+Max-Forwards: 70
+Contact: "scaipFallBack" <sip:scaipFallBack@47.62.0.216:5071>
+User-Agent: OpenViduSIP_GW/0.1
+Expires: 3600
+Proxy-Authorization: Digest username="scaipFallBack",realm="sip.twilio.com",nonce="sJ4ITG3kHKeCU9xjhFab7eJMv9gncteRd4-NCNf8j5jowZpJ",uri="sip:tecnovida.sip.twilio.com:5060;maddr=tecnovida.sip.twilio.com",response="6faa335f79c09ef18b07a3d8a8e10c36",opaque="b2c03e5ca63b246504214c408e52e6de",qop=auth,cnonce="xyz",nc=00000001
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5071" 
+time="1662398719658"
+isSender="false" 
+transactionId="z9hg4bk-343337-08912e9675c2f72537dccdcc3d915972" 
+callId="0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+CSeq: 2 REGISTER
+Call-ID: 0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25
+From: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=1
+To: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=18625015_c3356d0b_8bdc3f78-11c5-4002-9977-7bcd3a1280f5
+Via: SIP/2.0/UDP 47.62.0.216:5071;received=47.62.0.216;rport=5071;branch=z9hG4bK-343337-08912e9675c2f72537dccdcc3d915972
+Server: Twilio
+Contact: <sip:scaipFallBack@47.62.0.216:5071>;expires=3600
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5071" 
+time="1662398719659"
+isSender="false" 
+transactionId="z9hg4bk-343337-08912e9675c2f72537dccdcc3d915972" 
+callId="0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+CSeq: 2 REGISTER
+Call-ID: 0cf2027ef95b9ba8a725c78bdc62dada@192.168.0.25
+From: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=1
+To: "scaipFallBack" <sip:scaipFallBack@tecnovida.sip.twilio.com>;tag=18625015_c3356d0b_8bdc3f78-11c5-4002-9977-7bcd3a1280f5
+Via: SIP/2.0/UDP 47.62.0.216:5071;received=47.62.0.216;rport=5071;branch=z9hG4bK-343337-08912e9675c2f72537dccdcc3d915972
+Server: Twilio
+Contact: <sip:scaipFallBack@47.62.0.216:5071>;expires=3600
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5070" 
+time="1662398719661"
+isSender="false" 
+transactionId="z9hg4bk-343337-daad1d14f349e518105126b153e9f1dd" 
+callId="bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+CSeq: 2 REGISTER
+Call-ID: bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25
+From: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=0
+To: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=19775920_c3356d0b_dabada96-8873-4012-b412-c2a828996e3f
+Via: SIP/2.0/UDP 47.62.0.216:5070;received=47.62.0.216;rport=5070;branch=z9hG4bK-343337-daad1d14f349e518105126b153e9f1dd
+Server: Twilio
+Contact: <sip:scaipPrimary@47.62.0.216:5070>;expires=3600
+Content-Length: 0
+
+]]>
+</message>
+
+<message
+from="54.172.60.0:5060" 
+to="192.168.0.25:5070" 
+time="1662398719661"
+isSender="false" 
+transactionId="z9hg4bk-343337-daad1d14f349e518105126b153e9f1dd" 
+callId="bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25" 
+firstLine="SIP/2.0 200 OK" 
+>
+<![CDATA[SIP/2.0 200 OK
+CSeq: 2 REGISTER
+Call-ID: bdc5b2ca15564aabef4e457d0afa1a25@192.168.0.25
+From: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=0
+To: "scaipPrimary" <sip:scaipPrimary@tecnovida.sip.twilio.com>;tag=19775920_c3356d0b_dabada96-8873-4012-b412-c2a828996e3f
+Via: SIP/2.0/UDP 47.62.0.216:5070;received=47.62.0.216;rport=5070;branch=z9hG4bK-343337-daad1d14f349e518105126b153e9f1dd
+Server: Twilio
+Contact: <sip:scaipPrimary@47.62.0.216:5070>;expires=3600
+Content-Length: 0
+
+]]>
+</message>
+

@@ -8,8 +8,9 @@ import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.naeva.example.rabbitmq.model.BridgeMessage;
 import com.naeva.example.rabbitmq.services.RabbitMQProducersService;
 
@@ -22,9 +23,11 @@ public class RabbitMQListener {
 
 
 
-	@RabbitListener(queues = "${app.rabbitmq.scaipPrimaryQueue}")
-	public void scaipPrimaryQueue(final GenericMessage<String> message) throws JsonSyntaxException{
-		BridgeMessage bridgeMessage = new Gson().fromJson(message.getPayload(), BridgeMessage.class);
+	@RabbitListener(queues = "${app.rabbitmq.scaipPrimaryQueue}") 
+	public void scaipPrimaryQueue(final GenericMessage<String> message) 
+			throws JsonMappingException, JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		BridgeMessage bridgeMessage = mapper.readValue(message.getPayload(), BridgeMessage.class);
 		message.getHeaders().forEach((key, value) -> {
 			log.info("Key: " + key + " Value: " + value);
 		});
@@ -48,8 +51,11 @@ public class RabbitMQListener {
 	}
 
 	@RabbitListener(queues = "${app.rabbitmq.scaipSecondaryQueue}")
-	public void scaipSecondaryQueue(final GenericMessage<String> message) {
-		BridgeMessage bridgeMessage = new Gson().fromJson(message.getPayload(), BridgeMessage.class);
+	public void scaipSecondaryQueue(final GenericMessage<String> message) 
+			throws JsonMappingException, JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		BridgeMessage bridgeMessage = mapper.readValue(message.getPayload(), BridgeMessage.class);
+
 		message.getHeaders().forEach((key, value) -> {
 			log.info("Key: " + key + " Value: " + value);
 		});
